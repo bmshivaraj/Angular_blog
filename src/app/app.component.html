@@ -1,0 +1,174 @@
+<app-header></app-header>
+<h1>Hello World!</h1>
+<app-user-list></app-user-list>
+<app-login></app-login>
+<app-signup></app-signup>
+<h3>button to show alert mssage!</h3>
+<button (click)="clickFunction(myName)">click me!</button>
+<h3>button to show console mssage!</h3>
+<br><button (click)="clickEventDemo('click demo')">click demo</button>
+
+<h3>text to show keyup mssage!</h3>
+<br><input type="text" #box (keyup)="keyupFunction(box.value)"/> 
+<h3>text to show keydown mssage!</h3>
+<br><input type="text" #box1 (keydown)="keydownFunction(box1.value)"/> 
+
+<h3>text to show keyup with enter mssage!</h3>
+<br><input type="text" #box2 (keyup.enter)="keydownFunction(box2.value)"/> 
+
+<h3>text to show entered value back on html page!</h3>
+<br><input type="text" #box3 (keyup.enter)="keyupEnterFunction(box3.value)"/> 
+<h3>{{ var1 }}</h3>
+<button (click)="clickFunction(box3.value)">click me!</button>
+
+<h2 style="background-color: skyblue;"> mouse events!</h2>
+
+<h2 
+(mouseover)="mouseoverFunction('mouse pointer at this area!')"
+(mouseleave)="mouseleaveFunction('mouse pointer left this area!')"
+style="background-color: greenyellow;"> mouse events!</h2>
+
+<br><br>
+<h2>-------property binding-------</h2>
+
+<input type="text" value="my name is {{ myName }}"/>
+<br>
+<h3>-------property binding via interpollation-------</h3>
+<input type="text" disabled="{{ disabledProperty }}" value="{{ myName }}"/>
+<br>
+<h3>-------property binding via property binding-------</h3>
+<input type="text" [disabled]=disabledProperty [value]="myName"/>
+
+
+<h2>-------if else block-------</h2>
+<h2 *ngIf="show==false; then ifBlock else elseBlock"></h2>
+
+<ng-template #ifBlock>
+    <h3> if block</h3>
+</ng-template>
+
+<ng-template #elseBlock>
+    <h3>else block</h3>
+</ng-template>
+
+
+<h2>------- conditional statements-------</h2>
+<ng-template [ngIf]="color=='red'">
+    <h3>red</h3>
+</ng-template>
+
+<ng-template [ngIf]="color=='blue'">
+    <h3>blue</h3>
+</ng-template>
+
+
+<h2>-------switch case-------</h2>
+<div [ngSwitch]="color">
+    <h2 style="color: red;" *ngSwitchCase="'red'">
+        red color
+    </h2>
+    <h2 style="color: green;" *ngSwitchCase="'green'">
+        red color
+    </h2>
+    <h2 style="color: grey;" *ngSwitchDefault>
+        grey color
+    </h2>
+</div>
+
+<h2>-------for loop for string array-------</h2>
+
+<div *ngFor="let item of data">
+    <h3>{{item}}</h3>
+</div>
+
+<h2>-------for loop for object of array-------</h2>
+<table  border="1">
+    <tr>
+        <td>name</td>
+        <td>age</td>
+    </tr>
+
+    <tr *ngFor="let item of data1">
+        <td>{{item.name}}</td>
+        <td>{{item.age}}</td>
+       
+    </tr>
+</table>
+
+<h2>------Two-way Binding Example------</h2>    
+<input type="text" [(ngModel)]="fullName" /> <br/><br/>    
+<p> {{fullName}} </p>  
+
+
+<h2>-------simple form---------</h2>
+
+
+<form #simpleForm="ngForm" (ngSubmit)="getValues(simpleForm.value)">
+    
+    <input type="text" name="user name" [(ngModel)]="enter_user_name" placeholder="{{ enter_user_name }}">
+    <br><br>
+    <input type="text" ngModel name="age" placeholder={{enter_user_name}}>
+    <br><br>
+    <input type="text" ngModel name="address" placeholder="enter user address">
+    <br><br>
+    <button>Get User Values</button>
+
+    <h2>{{ enter_user_name }}</h2>
+</form>
+
+
+<br><h2>---------------------style binding-----------</h2>
+<h2 style="color: red"> without style binding</h2>
+<h2 [style.color]="toggle?'purple':'orange'"> with style binding</h2>
+<button (click)="clickToChangeColor('red')">click me!</button>
+
+<br>
+<h2>-------------exmple of angular material library-----------</h2>
+
+<section>
+<div>
+      <button mat-button>Basic</button>
+      <button mat-button color="primary">Primary</button>
+      <button mat-button color="accent">Accent</button>
+      <button mat-button color="warn">Warn</button>
+      <button mat-button disabled>Disabled</button>
+</div>
+</section>
+
+<h2>-------example of passing variable from parent to child and vis a versa--------</h2>
+<button (click)="increment()"> increment from parent!</button>
+{{counter}}
+<app-child-comp [(counter)]="counter"></app-child-comp>
+
+<h2> example of passing data from parent to child</h2>
+<h2>in parent side</h2>
+<div class="box">
+    <p>{{userdetails.name}}</p>
+    <p>{{userdetails.age}}</p>
+    <p>{{userdetails.address}}</p>
+</div>
+<app-child-comp [hero]="data"></app-child-comp>
+<app-child-comp [userdetails]="userdetails"></app-child-comp>
+
+<br><br>
+<h2> ------------------ routing example ----------------</h2>
+<a routerLink="userlogin">userlogin</a>
+<br>
+<a routerLink="userlist">userlist</a>
+<br>
+<a routerLink="userlist1">userlist1</a>
+<router-outlet></router-outlet>
+<br>
+
+<h2>--------example of custom directive-------</h2>
+<h3 appCustomStyle>custom directive color and font</h3>
+<br>
+<h2>--------example of cooking service-----------</h2>
+{{cookingItem}}
+<br>
+
+
+<br>
+
+
+<app-footer></app-footer>

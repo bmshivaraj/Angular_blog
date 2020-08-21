@@ -1,0 +1,12 @@
+<p>child-comp works!</p>
+<p>{{counter}}</p>
+<br><br>
+<p>counter value passed from parent to child: </p>
+<p>{{hero}}</p>
+<div *ngFor="let item of hero">
+    <h3>{{item}}</h3>
+</div>
+<h3> tryting to get cooking service from child component</h3>
+<button (click)="getCookingServiceValues()">click me!</button>
+<h2>{{cookingItem | json}}</h2>
+<p></p>
